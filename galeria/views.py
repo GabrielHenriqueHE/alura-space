@@ -4,9 +4,6 @@ from galeria.models import Fotografia
 def index(request):
 
     fotografias = Fotografia.objects.filter(publicada=True).order_by('-data_fotografia')
-    
-    for fotografia in fotografias:
-        print(fotografia)
 
     return render(request, 'galeria/index.html', {'cards': fotografias})
 

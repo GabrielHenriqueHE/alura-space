@@ -37,10 +37,6 @@ def cadastro(request):
         form = CadastroForm(request.POST)
 
         if form.is_valid():
-            if form["senha"].value() != form["confirmar_senha"].value():
-                messages.error(request, "Credenciais inválidas para autenticação.")
-
-                return redirect("cadastro")
 
             nome = form["nome_login"].value()
             email = form["email"].value()

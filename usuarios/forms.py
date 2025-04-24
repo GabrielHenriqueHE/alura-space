@@ -57,3 +57,25 @@ class CadastroForm(forms.Form):
             attrs={"class": "form-control", "placeholder": "Digite sua senha novamente"}
         ),
     )
+
+    def clean_nome_login(self):
+        nome = self.cleaned_data.get("nome_login")
+
+        if nome:
+            nome = nome.strip()
+            if " " in nome:
+                raise forms.ValidationError(
+                    "Não é possível inserir espaços no nome de login."
+                )
+            else:
+                return nome
+
+    def clean_confirmar_senha(self):
+        senha = self.cleaned_data.get("senha")
+        confirmar_senha = self.cleaned_data.get("confirmar_senha")
+
+        if senha and confirmar_senha:
+            if senha != confirmar_senha:
+                raise forms.ValidationError("As senhas não são iguais.")
+            else:
+                return confirmar_senha

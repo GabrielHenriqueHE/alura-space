@@ -22,8 +22,8 @@ class LoginForm(forms.Form):
     )
 
 class CadastroForm(forms.Form):
-    nome_completo = forms.CharField(
-        label='Nome completo',
+    nome_login = forms.CharField(
+        label='Nome de login',
         required=True,
         max_length=100,
         widget=forms.TextInput(attrs={
@@ -52,7 +52,7 @@ class CadastroForm(forms.Form):
         })        
     )
 
-    confirma_senha = forms.CharField(
+    confirmar_senha = forms.CharField(
         label='Confirmação de senha',
         required=True,
         max_length=70,
